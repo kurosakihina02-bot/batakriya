@@ -1,0 +1,1056 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panduan lengkap cara membuat batu bata merah berkualitas. Belajar memilih tanah liat, mencetak, menjemur, membakar, hingga menghitung kebutuhan produksi.">
+  <title>BataKriya - Panduan Membuat Batu Bata Merah</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            terracotta: '#C04000',
+            clay: '#5C4033',
+            cream: '#FDFBF7',
+            ink: '#2D2926',
+            sand: '#F1E8DC'
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            display: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+    body {
+      background: #FDFBF7;
+      color: #2D2926;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .hero-bg {
+      background:
+        linear-gradient(90deg, rgba(35,24,19,.94) 0%, rgba(35,24,19,.72) 50%, rgba(35,24,19,.22) 100%),
+        url('https://images.unsplash.com/photo-1590075865003-e48277faa558?auto=format&fit=crop&w=1800&q=85') center/cover;
+    }
+
+    .section-label {
+      color: #C04000;
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #eee5da;
+      border-radius: 18px;
+      transition: .3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(92,64,51,.09);
+      border-color: #d9a58c;
+    }
+
+    .step-panel { display: none; }
+    .step-panel.active { display: block; animation: fade .35s ease; }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .step-btn.active {
+      background: #C04000;
+      color: white;
+      border-color: #C04000;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-icon { transition: transform .25s; }
+
+    .mobile-menu { display: none; }
+    .mobile-menu.show { display: flex; }
+
+    .btn-primary {
+      background: #C04000;
+      color: white;
+      transition: .25s;
+    }
+
+    .btn-primary:hover {
+      background: #963300;
+      transform: translateY(-2px);
+    }
+
+    .input-field {
+      width: 100%;
+      border: 1px solid #e5d9cc;
+      border-radius: 12px;
+      padding: 14px;
+      background: #fff;
+      outline: none;
+      transition: .2s;
+    }
+
+    .input-field:focus {
+      border-color: #C04000;
+      box-shadow: 0 0 0 3px rgba(192,64,0,.1);
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="sticky top-0 z-50 bg-cream/95 backdrop-blur-lg border-b border-[#eee5da]">
+  <nav class="max-w-7xl mx-auto px-5 lg:px-8 h-20 flex items-center justify-between">
+
+    <a href="#beranda" class="flex items-center gap-3">
+      <div class="w-11 h-11 rounded-xl bg-terracotta text-white flex items-center justify-center text-2xl">
+        🧱
+      </div>
+      <div>
+        <h1 class="font-extrabold text-xl text-clay">BataKriya<span class="text-terracotta">.</span></h1>
+        <p class="text-[10px] tracking-widest text-gray-500 uppercase">Panduan Bata Merah</p>
+      </div>
+    </a>
+
+    <div class="hidden lg:flex items-center gap-7 text-sm font-semibold text-clay">
+      <a href="#beranda" class="hover:text-terracotta">Beranda</a>
+      <a href="#alat-bahan" class="hover:text-terracotta">Alat & Bahan</a>
+      <a href="#tutorial" class="hover:text-terracotta">Langkah Pembuatan</a>
+      <a href="#tips" class="hover:text-terracotta">Tips & Trik</a>
+      <a href="#kalkulator" class="hover:text-terracotta">Kalkulator</a>
+    </div>
+
+    <a href="#kalkulator" class="hidden md:block btn-primary px-5 py-3 rounded-full text-sm font-bold">
+      Hitung Produksi →
+    </a>
+
+    <button id="menuBtn" class="lg:hidden text-2xl p-2" aria-label="Buka menu" aria-expanded="false">
+      ☰
+    </button>
+  </nav>
+
+  <div id="mobileMenu" class="mobile-menu flex-col gap-4 px-6 pb-6 text-sm font-semibold text-clay lg:hidden">
+    <a href="#beranda">Beranda</a>
+    <a href="#alat-bahan">Alat & Bahan</a>
+    <a href="#tutorial">Langkah Pembuatan</a>
+    <a href="#tips">Tips & Trik</a>
+    <a href="#kalkulator">Kalkulator Bahan</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section id="beranda" class="hero-bg min-h-[650px] flex items-center">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 w-full">
+
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-orange-200 rounded-full px-4 py-2 text-xs font-bold mb-7">
+        <span>✦</span> PANDUAN EDUKASI INDUSTRI BATA MERAH
+      </div>
+
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-7">
+        Panduan Lengkap Membuat
+        <span class="text-orange-400">Batu Bata Merah</span>
+        Berkualitas Tinggi
+      </h2>
+
+      <p class="text-gray-200 text-base sm:text-lg leading-8 max-w-2xl mb-9">
+        Pelajari proses pembuatan batu bata merah dari pemilihan
+        tanah liat, pengolahan adonan, pencetakan, penjemuran,
+        hingga pembakaran sempurna.
+      </p>
+
+      <div class="flex flex-wrap gap-4">
+        <a href="#tutorial" class="btn-primary rounded-full px-7 py-4 font-bold">
+          Mulai Belajar →
+        </a>
+        <a href="#kalkulator" class="border border-white/50 text-white hover:bg-white hover:text-clay rounded-full px-7 py-4 font-bold transition">
+          Hitung Kebutuhan Bahan
+        </a>
+      </div>
+
+      <div class="flex gap-8 mt-14 text-white">
+        <div>
+          <h3 class="text-3xl font-extrabold">6</h3>
+          <p class="text-xs text-gray-300 mt-1">Tahap produksi</p>
+        </div>
+        <div>
+          <h3 class="text-3xl font-extrabold">100%</h3>
+          <p class="text-xs text-gray-300 mt-1">Panduan edukatif</p>
+        </div>
+        <div>
+          <h3 class="text-3xl font-extrabold">UMKM</h3>
+          <p class="text-xs text-gray-300 mt-1">Ramah pemula</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="py-20 px-6">
+  <div class="max-w-5xl mx-auto text-center">
+    <p class="section-label mb-4">MENGENAL PROSES PRODUKSI</p>
+    <h2 class="font-display text-3xl sm:text-4xl text-clay mb-6">
+      Dari Tanah Liat Menjadi Material Bangunan
+    </h2>
+    <p class="text-gray-600 leading-8 max-w-3xl mx-auto">
+      Batu bata merah merupakan material bangunan yang dibuat
+      dari tanah liat melalui proses pengolahan, pencetakan,
+      pengeringan, dan pembakaran. Kualitas hasil produksi
+      sangat dipengaruhi bahan baku dan pengendalian setiap tahap.
+    </p>
+  </div>
+</section>
+
+<!-- ALAT DAN BAHAN -->
+<section id="alat-bahan" class="py-20 bg-[#F5EEE5] px-6">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="text-center mb-14">
+      <p class="section-label mb-3">PERSIAPAN PRODUKSI</p>
+      <h2 class="font-display text-3xl sm:text-4xl text-clay mb-4">
+        Alat dan Bahan yang Dibutuhkan
+      </h2>
+      <p class="text-gray-600">Persiapkan kebutuhan produksi sebelum memulai.</p>
+    </div>
+
+    <h3 class="text-xl font-extrabold text-clay mb-6">🪴 Bahan Utama</h3>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
+
+      <article class="card p-6">
+        <div class="text-4xl mb-4">🟤</div>
+        <h4 class="font-bold text-lg mb-2">Tanah Liat</h4>
+        <p class="text-sm text-gray-500 leading-6">
+          Pilih lempung yang plastis, bersih, dan bebas dari
+          kerikil maupun bahan organik berlebihan.
+        </p>
+      </article>
+
+      <article class="card p-6">
+        <div class="text-4xl mb-4">💧</div>
+        <h4 class="font-bold text-lg mb-2">Air Bersih</h4>
+        <p class="text-sm text-gray-500 leading-6">
+          Digunakan untuk mengatur kelembapan dan membuat
+          adonan mudah dibentuk.
+        </p>
+      </article>
+
+      <article class="card p-6">
+        <div class="text-4xl mb-4">🌾</div>
+        <h4 class="font-bold text-lg mb-2">Sekam Padi</h4>
+        <p class="text-sm text-gray-500 leading-6">
+          Bahan tambahan yang dapat membantu mengatur
+          karakter adonan sesuai komposisi tanah.
+        </p>
+      </article>
+
+      <article class="card p-6">
+        <div class="text-4xl mb-4">🔥</div>
+        <h4 class="font-bold text-lg mb-2">Bahan Bakar</h4>
+        <p class="text-sm text-gray-500 leading-6">
+          Kayu bakar atau bahan bakar biomassa yang sesuai
+          dengan sistem tungku.
+        </p>
+      </article>
+
+    </div>
+
+    <h3 class="text-xl font-extrabold text-clay mb-6">🛠️ Peralatan Produksi</h3>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+
+      <article class="card p-5">
+        <div class="text-3xl mb-3">⛏️</div>
+        <h4 class="font-bold mb-2">Cangkul</h4>
+        <p class="text-sm text-gray-500">Menggali dan mengambil tanah liat.</p>
+      </article>
+
+      <article class="card p-5">
+        <div class="text-3xl mb-3">📐</div>
+        <h4 class="font-bold mb-2">Cetakan Bata</h4>
+        <p class="text-sm text-gray-500">Membentuk ukuran bata yang seragam.</p>
+      </article>
+
+      <article class="card p-5">
+        <div class="text-3xl mb-3">🪵</div>
+        <h4 class="font-bold mb-2">Meja Cetak</h4>
+        <p class="text-sm text-gray-500">Tempat proses pencetakan adonan.</p>
+      </article>
+
+      <article class="card p-5">
+        <div class="text-3xl mb-3">☀️</div>
+        <h4 class="font-bold mb-2">Rak Penjemuran</h4>
+        <p class="text-sm text-gray-500">Tempat mengeringkan bata mentah.</p>
+      </article>
+
+      <article class="card p-5">
+        <div class="text-3xl mb-3">🏭</div>
+        <h4 class="font-bold mb-2">Tungku / Tobong</h4>
+        <p class="text-sm text-gray-500">Tempat proses pembakaran batu bata.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- TUTORIAL -->
+<section id="tutorial" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-14">
+      <p class="section-label mb-3">PANDUAN PRAKTIS</p>
+      <h2 class="font-display text-3xl sm:text-4xl text-clay mb-4">
+        6 Langkah Membuat Batu Bata
+      </h2>
+      <p class="text-gray-500">Ikuti setiap tahapan secara berurutan.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-10">
+
+      <!-- TAB NAVIGATION -->
+      <div class="lg:col-span-4">
+        <div class="flex lg:flex-col gap-3 overflow-x-auto pb-3 lg:pb-0">
+
+          <button class="step-btn active border border-[#eaded1] rounded-xl p-4 text-left min-w-[190px] lg:min-w-0" data-step="0">
+            <span class="font-bold">01. Pemilihan Tanah</span>
+            <p class="text-xs mt-1 opacity-70">Bahan baku utama</p>
+          </button>
+
+          <button class="step-btn border border-[#eaded1] rounded-xl p-4 text-left min-w-[190px] lg:min-w-0" data-step="1">
+            <span class="font-bold">02. Pengolahan Adonan</span>
+            <p class="text-xs mt-1 opacity-70">Pencampuran bahan</p>
+          </button>
+
+          <button class="step-btn border border-[#eaded1] rounded-xl p-4 text-left min-w-[190px] lg:min-w-0" data-step="2">
+            <span class="font-bold">03. Pencetakan Bata</span>
+            <p class="text-xs mt-1 opacity-70">Pembentukan ukuran</p>
+          </button>
+
+          <button class="step-btn border border-[#eaded1] rounded-xl p-4 text-left min-w-[190px] lg:min-w-0" data-step="3">
+            <span class="font-bold">04. Pengeringan</span>
+            <p class="text-xs mt-1 opacity-70">Penjemuran bertahap</p>
+          </button>
+
+          <button class="step-btn border border-[#eaded1] rounded-xl p-4 text-left min-w-[190px] lg:min-w-0" data-step="4">
+            <span class="font-bold">05. Pembakaran</span>
+            <p class="text-xs mt-1 opacity-70">Proses pematangan</p>
+          </button>
+
+          <button class="step-btn border border-[#eaded1] rounded-xl p-4 text-left min-w-[190px] lg:min-w-0" data-step="5">
+            <span class="font-bold">06. Pendinginan</span>
+            <p class="text-xs mt-1 opacity-70">Sortir kualitas</p>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- STEP CONTENT -->
+      <div class="lg:col-span-8 bg-white border border-[#eee5da] rounded-3xl p-7 sm:p-10 shadow-sm">
+
+        <div class="step-panel active" data-panel="0">
+          <span class="section-label">TAHAP 01</span>
+          <h3 class="font-display text-3xl text-clay mt-3 mb-4">
+            Pemilihan & Penggalian Tanah Liat
+          </h3>
+          <div class="text-4xl mb-5">🟤</div>
+          <p class="text-gray-600 leading-8 mb-5">
+            Kualitas batu bata dimulai dari pemilihan bahan
+            baku. Gunakan tanah lempung yang mempunyai
+            plastisitas cukup sehingga mudah dibentuk.
+          </p>
+          <h4 class="font-bold mb-3">Hal yang harus diperhatikan:</h4>
+          <ul class="space-y-3 text-gray-600 text-sm leading-6">
+            <li>✓ Pilih tanah dengan kandungan lempung yang sesuai.</li>
+            <li>✓ Hindari tanah yang banyak mengandung kerikil dan batu.</li>
+            <li>✓ Singkirkan akar, sampah, dan bahan organik.</li>
+            <li>✓ Lakukan uji coba adonan sebelum produksi besar.</li>
+          </ul>
+          <div class="mt-7 bg-[#F8F0E7] rounded-xl p-4">
+            <p class="font-bold text-clay">⏱ Estimasi waktu: 1–2 hari</p>
+            <p class="text-xs text-gray-500 mt-1">Bergantung lokasi dan jumlah bahan baku.</p>
+          </div>
+        </div>
+
+        <div class="step-panel" data-panel="1">
+          <span class="section-label">TAHAP 02</span>
+          <h3 class="font-display text-3xl text-clay mt-3 mb-4">
+            Pengolahan & Pencampuran Adonan
+          </h3>
+          <div class="text-4xl mb-5">🌾</div>
+          <p class="text-gray-600 leading-8 mb-5">
+            Tanah liat dilumatkan sampai teksturnya merata.
+            Tambahkan air sedikit demi sedikit hingga adonan
+            cukup plastis dan mudah dibentuk.
+          </p>
+          <h4 class="font-bold mb-3">Proses pengerjaan:</h4>
+          <ul class="space-y-3 text-gray-600 text-sm leading-6">
+            <li>✓ Hancurkan gumpalan tanah liat.</li>
+            <li>✓ Ayak atau sortir material kasar.</li>
+            <li>✓ Tambahkan air secara bertahap.</li>
+            <li>✓ Campurkan sekam sesuai hasil uji komposisi.</li>
+            <li>✓ Uleni hingga adonan homogen dan tidak terlalu basah.</li>
+          </ul>
+          <div class="mt-7 bg-[#F8F0E7] rounded-xl p-4">
+            <p class="font-bold text-clay">⏱ Estimasi waktu: 1–2 hari</p>
+            <p class="text-xs text-gray-500 mt-1">Termasuk waktu pengadukan dan pemeraman adonan.</p>
+          </div>
+        </div>
+
+        <div class="step-panel" data-panel="2">
+          <span class="section-label">TAHAP 03</span>
+          <h3 class="font-display text-3xl text-clay mt-3 mb-4">
+            Proses Pencetakan Batu Bata
+          </h3>
+          <div class="text-4xl mb-5">📐</div>
+          <p class="text-gray-600 leading-8 mb-5">
+            Masukkan adonan ke dalam cetakan kayu atau besi
+            yang sudah disiapkan. Pastikan ukuran dan kepadatan
+            setiap bata relatif seragam.
+          </p>
+          <h4 class="font-bold mb-3">Teknik pencetakan:</h4>
+          <ul class="space-y-3 text-gray-600 text-sm leading-6">
+            <li>✓ Bersihkan dan basahi cetakan seperlunya.</li>
+            <li>✓ Masukkan adonan hingga memenuhi cetakan.</li>
+            <li>✓ Tekan agar adonan padat dan tidak berongga.</li>
+            <li>✓ Ratakan permukaan bata.</li>
+            <li>✓ Lepaskan cetakan secara hati-hati.</li>
+          </ul>
+          <div class="mt-7 bg-[#F8F0E7] rounded-xl p-4">
+            <p class="font-bold text-clay">⏱ Estimasi waktu: 1–3 hari</p>
+            <p class="text-xs text-gray-500 mt-1">Tergantung target produksi dan jumlah pekerja.</p>
+          </div>
+        </div>
+
+        <div class="step-panel" data-panel="3">
+          <span class="section-label">TAHAP 04</span>
+          <h3 class="font-display text-3xl text-clay mt-3 mb-4">
+            Pengeringan / Penjemuran
+          </h3>
+          <div class="text-4xl mb-5">☀️</div>
+          <p class="text-gray-600 leading-8 mb-5">
+            Bata mentah perlu dikeringkan secara bertahap
+            agar kadar air berkurang sebelum masuk ke tungku.
+          </p>
+          <h4 class="font-bold mb-3">Cara pengeringan:</h4>
+          <ul class="space-y-3 text-gray-600 text-sm leading-6">
+            <li>✓ Letakkan bata di tempat teduh terlebih dahulu.</li>
+            <li>✓ Hindari sinar matahari langsung pada tahap awal.</li>
+            <li>✓ Setelah cukup kuat, jemur secara bertahap.</li>
+            <li>✓ Susun dengan jarak agar sirkulasi udara baik.</li>
+            <li>✓ Balik atau atur posisi bila diperlukan.</li>
+          </ul>
+          <div class="mt-7 bg-[#F8F0E7] rounded-xl p-4">
+            <p class="font-bold text-clay">⏱ Estimasi waktu: 3–7 hari atau lebih</p>
+            <p class="text-xs text-gray-500 mt-1">Sangat dipengaruhi cuaca, ukuran bata, dan kelembapan.</p>
+          </div>
+        </div>
+
+        <div class="step-panel" data-panel="4">
+          <span class="section-label">TAHAP 05</span>
+          <h3 class="font-display text-3xl text-clay mt-3 mb-4">
+            Penyusunan & Pembakaran
+          </h3>
+          <div class="text-4xl mb-5">🔥</div>
+          <p class="text-gray-600 leading-8 mb-5">
+            Bata kering disusun dalam tobong dengan pola
+            yang memungkinkan aliran panas merata. Pembakaran
+            harus dikendalikan sesuai karakter tanah dan tungku.
+          </p>
+          <h4 class="font-bold mb-3">Hal penting dalam pembakaran:</h4>
+          <ul class="space-y-3 text-gray-600 text-sm leading-6">
+            <li>✓ Pastikan bata cukup kering sebelum dibakar.</li>
+            <li>✓ Susun dengan memperhatikan jalur aliran panas.</li>
+            <li>✓ Mulai pemanasan secara bertahap.</li>
+            <li>✓ Atur suplai udara dan bahan bakar.</li>
+            <li>✓ Pantau suhu dan kematangan di berbagai bagian tungku.</li>
+          </ul>
+          <div class="mt-7 bg-[#F8F0E7] rounded-xl p-4">
+            <p class="font-bold text-clay">⏱ Estimasi waktu: 2–4 hari</p>
+            <p class="text-xs text-gray-500 mt-1">Durasi pembakaran dapat berbeda menurut kapasitas dan desain tobong.</p>
+          </div>
+        </div>
+
+        <div class="step-panel" data-panel="5">
+          <span class="section-label">TAHAP 06</span>
+          <h3 class="font-display text-3xl text-clay mt-3 mb-4">
+            Pendinginan & Sortir Kualitas
+          </h3>
+          <div class="text-4xl mb-5">🧱</div>
+          <p class="text-gray-600 leading-8 mb-5">
+            Setelah pembakaran selesai, tungku harus
+            didinginkan secara bertahap sebelum dibongkar.
+            Kemudian lakukan pemeriksaan hasil produksi.
+          </p>
+          <h4 class="font-bold mb-3">Pemeriksaan kualitas:</h4>
+          <ul class="space-y-3 text-gray-600 text-sm leading-6">
+            <li>✓ Pastikan bata telah dingin sebelum ditangani.</li>
+            <li>✓ Periksa warna dan keseragaman pembakaran.</li>
+            <li>✓ Periksa retak, pecah, dan perubahan bentuk.</li>
+            <li>✓ Uji bunyi ketukan sebagai pemeriksaan awal.</li>
+            <li>✓ Lakukan pengujian kuat tekan dan penyerapan air untuk standar mutu.</li>
+          </ul>
+          <div class="mt-7 bg-[#F8F0E7] rounded-xl p-4">
+            <p class="font-bold text-clay">⏱ Estimasi waktu: 2–5 hari</p>
+            <p class="text-xs text-gray-500 mt-1">Tunggu hingga tungku aman dibongkar dan bata stabil.</p>
+          </div>
+        </div>
+
+        <!-- STEP NAVIGATION -->
+        <div class="flex justify-between items-center mt-10 pt-6 border-t border-[#eee5da]">
+          <button id="prevStep" class="px-5 py-3 rounded-full border border-[#e5d9cc] font-bold text-sm disabled:opacity-30">
+            ← Sebelumnya
+          </button>
+          <span id="stepCounter" class="text-xs font-bold text-gray-400">01 / 06</span>
+          <button id="nextStep" class="btn-primary px-5 py-3 rounded-full font-bold text-sm">
+            Selanjutnya →
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KALKULATOR -->
+<section id="kalkulator" class="py-24 bg-[#F1E8DC] px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-14">
+      <p class="section-label mb-3">TOOLS PRODUKSI UMKM</p>
+      <h2 class="font-display text-3xl sm:text-4xl text-clay mb-4">
+        Kalkulator Kebutuhan Bahan
+      </h2>
+      <p class="text-gray-600">
+        Hitung estimasi kebutuhan bahan berdasarkan target produksi.
+      </p>
+    </div>
+
+    <div class="bg-white rounded-3xl shadow-xl overflow-hidden grid lg:grid-cols-2">
+
+      <!-- INPUT -->
+      <div class="p-7 sm:p-10">
+        <div class="text-4xl mb-5">🧮</div>
+        <h3 class="font-bold text-2xl text-clay mb-3">
+          Rencana Produksi
+        </h3>
+        <p class="text-sm text-gray-500 mb-8">
+          Masukkan jumlah batu bata yang ingin diproduksi.
+        </p>
+
+        <label class="block text-sm font-bold mb-3" for="target">
+          Target produksi (buah)
+        </label>
+
+        <input
+          type="number"
+          id="target"
+          class="input-field text-lg font-bold"
+          value="1000"
+          min="1"
+          max="10000000"
+          step="1"
+        >
+
+        <div class="flex flex-wrap gap-2 mt-5">
+          <button class="preset px-4 py-2 bg-[#F8F0E7] rounded-full text-sm font-bold hover:bg-[#ead7c4]" data-value="1000">1.000</button>
+          <button class="preset px-4 py-2 bg-[#F8F0E7] rounded-full text-sm font-bold hover:bg-[#ead7c4]" data-value="5000">5.000</button>
+          <button class="preset px-4 py-2 bg-[#F8F0E7] rounded-full text-sm font-bold hover:bg-[#ead7c4]" data-value="10000">10.000</button>
+          <button class="preset px-4 py-2 bg-[#F8F0E7] rounded-full text-sm font-bold hover:bg-[#ead7c4]" data-value="50000">50.000</button>
+        </div>
+
+        <div class="mt-8 bg-[#FFF7EF] border border-[#F0DDCC] rounded-xl p-4">
+          <p class="text-sm font-bold text-clay mb-2">💡 Informasi</p>
+          <p class="text-xs leading-6 text-gray-500">
+            Perhitungan menggunakan asumsi kebutuhan bahan awal.
+            Sesuaikan dengan ukuran bata, jenis tanah, campuran,
+            susut produksi, dan sistem pembakaran di lokasi Anda.
+          </p>
+        </div>
+      </div>
+
+      <!-- OUTPUT -->
+      <div class="bg-clay text-white p-7 sm:p-10">
+        <p class="text-xs tracking-widest text-orange-200 font-bold mb-3">
+          HASIL ESTIMASI
+        </p>
+        <h3 class="text-2xl font-bold mb-8">Kebutuhan Produksi Anda</h3>
+
+        <div class="space-y-4">
+
+          <div class="bg-white/10 rounded-2xl p-5">
+            <div class="flex justify-between items-center">
+              <div>
+                <p class="text-sm text-orange-100">Tanah liat</p>
+                <h4 id="clayResult" class="text-3xl font-extrabold mt-2">1,80 m³</h4>
+              </div>
+              <span class="text-3xl">🟤</span>
+            </div>
+          </div>
+
+          <div class="bg-white/10 rounded-2xl p-5">
+            <div class="flex justify-between items-center">
+              <div>
+                <p class="text-sm text-orange-100">Sekam padi</p>
+                <h4 id="huskResult" class="text-3xl font-extrabold mt-2">2 karung</h4>
+              </div>
+              <span class="text-3xl">🌾</span>
+            </div>
+          </div>
+
+          <div class="bg-white/10 rounded-2xl p-5">
+            <div class="flex justify-between items-center">
+              <div>
+                <p class="text-sm text-orange-100">Kayu bakar</p>
+                <h4 id="woodResult" class="text-3xl font-extrabold mt-2">0,80 m³</h4>
+              </div>
+              <span class="text-3xl">🔥</span>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="text-xs text-orange-100 mt-7 leading-6">
+          *Angka merupakan ilustrasi perencanaan awal,
+          bukan standar teknis universal. Kebutuhan bahan bakar
+          terutama ditentukan desain tungku, kadar air bata,
+          dan efisiensi pembakaran.
+        </p>
+
+        <button id="printResult" class="mt-6 w-full bg-white text-clay font-bold py-4 rounded-xl hover:bg-orange-100 transition">
+          🖨 Cetak Hasil Perhitungan
+        </button>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section id="tips" class="py-24 px-6">
+  <div class="max-w-4xl mx-auto">
+
+    <div class="text-center mb-14">
+      <p class="section-label mb-3">PENGETAHUAN TAMBAHAN</p>
+      <h2 class="font-display text-3xl sm:text-4xl text-clay mb-4">
+        Tips Kualitas & Pemecahan Masalah
+      </h2>
+      <p class="text-gray-500">Temukan solusi untuk masalah umum produksi batu bata.</p>
+    </div>
+
+    <div class="space-y-4">
+
+      <article class="faq-item card overflow-hidden">
+        <button class="faq-question w-full flex items-center justify-between text-left p-6 gap-4">
+          <span class="font-bold text-clay">Mengapa batu bata retak saat dijemur?</span>
+          <span class="faq-icon text-2xl text-terracotta">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="px-6 pb-6 text-sm text-gray-600 leading-7">
+            Retakan dapat terjadi karena pengeringan terlalu cepat,
+            adonan terlalu banyak air, komposisi tanah tidak sesuai,
+            atau penyusutan yang tidak merata.
+            <br><br>
+            <strong>Solusi:</strong> Keringkan secara bertahap,
+            gunakan tempat teduh pada awal pengeringan,
+            perbaiki komposisi adonan, dan jaga keseragaman ukuran bata.
+          </div>
+        </div>
+      </article>
+
+      <article class="faq-item card overflow-hidden">
+        <button class="faq-question w-full flex items-center justify-between text-left p-6 gap-4">
+          <span class="font-bold text-clay">Bagaimana ciri batu bata matang sempurna?</span>
+          <span class="faq-icon text-2xl text-terracotta">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="px-6 pb-6 text-sm text-gray-600 leading-7">
+            Secara visual, bata yang matang baik umumnya memiliki
+            warna merah yang relatif merata, bentuk stabil,
+            dan tidak menunjukkan bagian yang masih mentah.
+            <br><br>
+            Ketukan dapat menghasilkan bunyi relatif nyaring,
+            tetapi bunyi bukan satu-satunya indikator.
+            Pengujian kuat tekan dan penyerapan air lebih tepat
+            untuk memastikan mutu produk.
+          </div>
+        </div>
+      </article>
+
+      <article class="faq-item card overflow-hidden">
+        <button class="faq-question w-full flex items-center justify-between text-left p-6 gap-4">
+          <span class="font-bold text-clay">Bagaimana produksi saat musim hujan?</span>
+          <span class="faq-icon text-2xl text-terracotta">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="px-6 pb-6 text-sm text-gray-600 leading-7">
+            Gunakan area penjemuran beratap dengan sirkulasi udara
+            yang baik. Buat rak bertingkat dan atur jarak antar bata.
+            <br><br>
+            Siapkan saluran drainase untuk mencegah genangan,
+            lindungi bata dari hujan langsung, dan perpanjang
+            waktu pengeringan sampai kadar air cukup rendah
+            sebelum proses pembakaran.
+          </div>
+        </div>
+      </article>
+
+      <article class="faq-item card overflow-hidden">
+        <button class="faq-question w-full flex items-center justify-between text-left p-6 gap-4">
+          <span class="font-bold text-clay">Apa penyebab batu bata mudah hancur?</span>
+          <span class="faq-icon text-2xl text-terracotta">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="px-6 pb-6 text-sm text-gray-600 leading-7">
+            Penyebabnya dapat berupa bahan baku yang kurang sesuai,
+            pencampuran tidak homogen, pencetakan kurang padat,
+            atau pembakaran yang tidak merata.
+            <br><br>
+            Periksa setiap tahap produksi dan lakukan pengujian
+            mutu secara berkala.
+          </div>
+        </div>
+      </article>
+
+      <article class="faq-item card overflow-hidden">
+        <button class="faq-question w-full flex items-center justify-between text-left p-6 gap-4">
+          <span class="font-bold text-clay">Bagaimana cara meningkatkan hasil produksi UMKM?</span>
+          <span class="faq-icon text-2xl text-terracotta">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="px-6 pb-6 text-sm text-gray-600 leading-7">
+            Buat standar ukuran cetakan, catat komposisi bahan,
+            jadwalkan pengeringan, optimalkan tata letak produksi,
+            dan lakukan pencatatan jumlah bata layak jual serta
+            produk cacat pada setiap siklus produksi.
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUALITY BANNER -->
+<section class="px-6 pb-24">
+  <div class="max-w-6xl mx-auto rounded-3xl bg-[#5C4033] p-9 sm:p-14 text-center text-white">
+    <div class="text-5xl mb-5">🧱</div>
+    <p class="text-orange-200 text-xs font-bold tracking-widest mb-4">
+      KUALITAS DIMULAI DARI PROSES
+    </p>
+    <h2 class="font-display text-3xl sm:text-4xl mb-5">
+      Bangun Kualitas, Bangun Kepercayaan.
+    </h2>
+    <p class="text-orange-100 max-w-2xl mx-auto leading-8 mb-8">
+      Produk batu bata yang berkualitas dimulai dari pemilihan
+      bahan baku, proses yang konsisten, dan pengendalian mutu
+      di setiap tahapan produksi.
+    </p>
+    <a href="#tutorial" class="inline-block bg-white text-clay font-bold rounded-full px-8 py-4 hover:bg-orange-100 transition">
+      Pelajari Tutorial →
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-[#251B17] text-white pt-16 pb-8 px-6">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12">
+
+      <div class="lg:col-span-2">
+        <h2 class="font-display text-3xl font-bold mb-4">
+          🧱 Bata<span class="text-orange-400">Kriya.</span>
+        </h2>
+        <p class="text-gray-400 leading-7 text-sm max-w-md">
+          Platform edukasi yang menyediakan panduan pembuatan
+          batu bata merah bagi pemula, pengrajin, dan pelaku
+          UMKM agar lebih memahami proses produksi dan kualitas
+          material bangunan.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-bold mb-5">Navigasi</h3>
+        <div class="space-y-3 text-sm text-gray-400 flex flex-col">
+          <a href="#beranda" class="hover:text-orange-400">Beranda</a>
+          <a href="#alat-bahan" class="hover:text-orange-400">Alat & Bahan</a>
+          <a href="#tutorial" class="hover:text-orange-400">Tutorial</a>
+          <a href="#tips" class="hover:text-orange-400">Tips & Trik</a>
+          <a href="#kalkulator" class="hover:text-orange-400">Kalkulator</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-bold mb-5">Tentang Website</h3>
+        <p class="text-sm text-gray-400 leading-7">
+          Materi edukasi seputar pembuatan bata merah,
+          pengolahan bahan, pembakaran, dan pengembangan
+          usaha produksi skala kecil.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="border-t border-white/10 pt-7 flex flex-col sm:flex-row justify-between gap-4 text-xs text-gray-500">
+      <p>© 2026 BataKriya. Semua Hak Dilindungi.</p>
+      <p>Dibuat untuk edukasi dan pengembangan UMKM Indonesia 🇮🇩</p>
+    </div>
+
+  </div>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+
+// MOBILE MENU
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+
+menuBtn.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('show');
+  menuBtn.textContent = isOpen ? '✕' : '☰';
+  menuBtn.setAttribute('aria-expanded', isOpen);
+});
+
+document.querySelectorAll('#mobileMenu a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('show');
+    menuBtn.textContent = '☰';
+    menuBtn.setAttribute('aria-expanded', 'false');
+  });
+});
+
+
+// INTERACTIVE TUTORIAL TABS
+const stepButtons = document.querySelectorAll('.step-btn');
+const stepPanels = document.querySelectorAll('.step-panel');
+const prevButton = document.getElementById('prevStep');
+const nextButton = document.getElementById('nextStep');
+const stepCounter = document.getElementById('stepCounter');
+
+let currentStep = 0;
+
+function showStep(index) {
+  currentStep = Math.max(0, Math.min(index, stepPanels.length - 1));
+
+  stepButtons.forEach((button, i) => {
+    button.classList.toggle('active', i === currentStep);
+  });
+
+  stepPanels.forEach((panel, i) => {
+    panel.classList.toggle('active', i === currentStep);
+  });
+
+  stepCounter.textContent =
+    String(currentStep + 1).padStart(2, '0') +
+    ' / ' +
+    String(stepPanels.length).padStart(2, '0');
+
+  prevButton.disabled = currentStep === 0;
+
+  nextButton.textContent =
+    currentStep === stepPanels.length - 1
+      ? 'Kembali ke Awal ↺'
+      : 'Selanjutnya →';
+}
+
+stepButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    showStep(Number(button.dataset.step));
+  });
+});
+
+prevButton.addEventListener('click', () => {
+  showStep(currentStep - 1);
+});
+
+nextButton.addEventListener('click', () => {
+  if (currentStep === stepPanels.length - 1) {
+    showStep(0);
+  } else {
+    showStep(currentStep + 1);
+  }
+});
+
+showStep(0);
+
+
+// FAQ ACCORDION
+document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', () => {
+    const item = button.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+
+    document.querySelectorAll('.faq-item').forEach(faq => {
+      faq.classList.remove('open');
+    });
+
+    if (!isOpen) {
+      item.classList.add('open');
+    }
+  });
+});
+
+
+// PRODUCTION CALCULATOR
+const targetInput = document.getElementById('target');
+
+const clayResult = document.getElementById('clayResult');
+const huskResult = document.getElementById('huskResult');
+const woodResult = document.getElementById('woodResult');
+
+const numberFormat = new Intl.NumberFormat('id-ID', {
+  maximumFractionDigits: 2
+});
+
+// ASUMSI ILUSTRATIF PER 1.000 BATU BATA:
+// Tanah liat: 1,8 m3
+// Sekam: 2 karung (asumsi ukuran karung 25 kg)
+// Kayu bakar: 0,8 m3
+// Nilai perlu dikalibrasi dengan data produksi nyata.
+
+function calculateMaterials() {
+  let target = Number(targetInput.value);
+
+  if (!Number.isFinite(target) || target <= 0) {
+    clayResult.textContent = '0 m³';
+    huskResult.textContent = '0 karung';
+    woodResult.textContent = '0 m³';
+    return;
+  }
+
+  target = Math.min(Math.floor(target), 10000000);
+
+  const factor = target / 1000;
+
+  const clay = factor * 1.8;
+  const husk = Math.ceil(factor * 2);
+  const wood = factor * 0.8;
+
+  clayResult.textContent =
+    numberFormat.format(clay) + ' m³';
+
+  huskResult.textContent =
+    numberFormat.format(husk) + ' karung';
+
+  woodResult.textContent =
+    numberFormat.format(wood) + ' m³';
+}
+
+targetInput.addEventListener('input', calculateMaterials);
+
+// QUICK PRESETS
+document.querySelectorAll('.preset').forEach(button => {
+  button.addEventListener('click', () => {
+    targetInput.value = button.dataset.value;
+    calculateMaterials();
+  });
+});
+
+calculateMaterials();
+
+
+// PRINT CALCULATOR
+document.getElementById('printResult').addEventListener('click', () => {
+  const target = Number(targetInput.value);
+
+  if (!Number.isFinite(target) || target < 1) {
+    alert('Masukkan target produksi yang valid.');
+    return;
+  }
+
+  const printContent = `
+    LAPORAN ESTIMASI PRODUKSI BATA MERAH
+
+    Target produksi: ${numberFormat.format(target)} buah
+
+    Tanah liat: ${clayResult.textContent}
+    Sekam padi: ${huskResult.textContent}
+    Kayu bakar: ${woodResult.textContent}
+
+    Catatan:
+    Angka merupakan estimasi ilustratif.
+    Sesuaikan dengan kondisi produksi sebenarnya.
+  `;
+
+  const printWindow = window.open('', '_blank');
+
+  if (!printWindow) {
+    alert('Izinkan pop-up browser untuk mencetak laporan.');
+    return;
+  }
+
+  printWindow.document.write(`
+    <!DOCTYPE html>
+    <html lang="id">
+    <head>
+      <meta charset="UTF-8">
+      <title>Laporan Produksi BataKriya</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          padding: 40px;
+          line-height: 2;
+          color: #333;
+        }
+        h1 { color: #C04000; }
+        pre { white-space: pre-wrap; font-size: 15px; }
+      </style>
+    </head>
+    <body>
+      <h1>BataKriya</h1>
+      <pre>${printContent}</pre>
+    </body>
+    </html>
+  `);
+
+  printWindow.document.close();
+  printWindow.focus();
+  printWindow.print();
+});
+
+</script>
+
+</body>
+</html>
